@@ -93,7 +93,7 @@ POSTGRES_URL=postgres://<username>:<password>@<host>:<port>/$DB_NAME
 DB_NAME=<your-database-name>
 ```
 
-Run migrations to populdate the database
+Run migrations to populate the database
 
 ```bash
 npx medusa db:migrate
