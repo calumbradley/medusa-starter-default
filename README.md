@@ -34,13 +34,64 @@
 
 ## Compatibility
 
-This starter is compatible with versions >= 1.8.0 of `@medusajs/medusa`. 
+This starter is compatible with versions >= 1.8.0 of `@medusajs/medusa`.
 
 ## Getting Started
 
 Visit the [Quickstart Guide](https://docs.medusajs.com/learn) to set up a server.
 
 Visit the [Docs](https://docs.medusajs.com/learn#get-started) to learn more about our system requirements.
+
+## Installation
+
+Install medusa-starter-default with npm
+
+```bash
+  git clone git@github.com:medusajs/medusa-starter-default.git
+  cd medusa-starter-default
+  npm install
+```
+
+Create a database in postgres
+
+```
+psql -h localhost -U postgres
+CREATE DATABASE "medusa-app";
+exit
+```
+
+Update the .env file
+
+```
+code .env -r
+```
+
+```
+# CORS settings for different parts of the app
+STORE_CORS=http://localhost:8000,https://your-storefront-domain.com
+ADMIN_CORS=http://localhost:5173,http://localhost:9000,https://your-admin-domain.com
+AUTH_CORS=http://localhost:5173,http://localhost:9000,https://your-auth-domain.com
+
+# Redis configuration
+REDIS_URL=redis://<username>:<password>@<host>:<port>
+
+# Security keys
+JWT_SECRET=<your-jwt-secret>
+COOKIE_SECRET=<your-cookie-secret>
+
+# Database configuration
+DATABASE_URL=postgres://<username>:<password>@<host>:<port>/$DB_NAME
+POSTGRES_URL=postgres://<username>:<password>@<host>:<port>/$DB_NAME
+
+# Database name
+DB_NAME=<your-database-name>
+```
+
+Run migrations to populdate the database
+
+```
+npx medusa db:migrate
+```
 
 ## What is Medusa
 
