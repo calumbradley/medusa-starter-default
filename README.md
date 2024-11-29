@@ -54,19 +54,25 @@ Install medusa-starter-default with npm
 
 Create a database in postgres
 
-```
+```bash
 psql -h localhost -U postgres
+```
+
+```sql
 CREATE DATABASE "medusa-app";
+```
+
+```bash
 exit
 ```
 
 Update the .env file
 
-```
+```bash
 code .env -r
 ```
 
-```
+```text
 # CORS settings for different parts of the app
 STORE_CORS=http://localhost:8000,https://your-storefront-domain.com
 ADMIN_CORS=http://localhost:5173,http://localhost:9000,https://your-admin-domain.com
@@ -89,7 +95,7 @@ DB_NAME=<your-database-name>
 
 Run migrations to populdate the database
 
-```
+```bash
 npx medusa db:migrate
 ```
 
@@ -98,20 +104,6 @@ npx medusa db:migrate
 Medusa is a set of commerce modules and tools that allow you to build rich, reliable, and performant commerce applications without reinventing core commerce logic. The modules can be customized and used to build advanced ecommerce stores, marketplaces, or any product that needs foundational commerce primitives. All modules are open-source and freely available on npm.
 
 Learn more about [Medusa’s architecture](https://docs.medusajs.com/learn/advanced-development/architecture/overview) and [commerce modules](https://docs.medusajs.com/learn/basics/commerce-modules) in the Docs.
-
-## Roadmap, Upgrades & Plugins
-
-You can view the planned, started and completed features in the [Roadmap discussion](https://github.com/medusajs/medusa/discussions/categories/roadmap).
-
-Follow the [Upgrade Guides](https://docs.medusajs.com/upgrade-guides/) to keep your Medusa project up-to-date.
-
-Check out all [available Medusa plugins](https://medusajs.com/plugins/).
-
-## Community & Contributions
-
-The community and core team are available in [GitHub Discussions](https://github.com/medusajs/medusa/discussions), where you can ask for support, discuss roadmap, and share ideas.
-
-Join our [Discord server](https://discord.com/invite/medusajs) to meet other community members.
 
 ## Other channels
 
