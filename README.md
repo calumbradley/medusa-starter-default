@@ -47,9 +47,9 @@ Visit the [Docs](https://docs.medusajs.com/learn#get-started) to learn more abou
 Install medusa-starter-default with npm
 
 ```bash
-  git clone git@github.com:medusajs/medusa-starter-default.git
-  cd medusa-starter-default
-  npm install
+git clone git@github.com:medusajs/medusa-starter-default.git
+cd medusa-starter-default
+npm install
 ```
 
 Create a database in postgres
