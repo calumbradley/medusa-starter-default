@@ -20,7 +20,6 @@ services:
       DATABASE_URL: postgres://postgres:medusa@db:5432/medusa-app?ssl_mode=disable
     ports:
       - "9000:9000"
-    command: tail -f /dev/null
 
 volumes:
   pgdata:

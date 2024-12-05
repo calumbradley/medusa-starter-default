@@ -1,4 +1,3 @@
-# Use the official Node.js image as the base image
 FROM node:20
 
 # Install postgresql-client
@@ -7,7 +6,7 @@ RUN apt-get update && apt-get install -y postgresql-client
 # Set the working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
@@ -16,5 +15,11 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose the port the app runs on
+# Make the wait-for-db.sh script executable
+RUN chmod +x ./scripts/wait-for-db.sh
+
+# Expose the application port
 EXPOSE 9000
+
+# Command to run the application
+CMD ["./scripts/wait-for-db.sh", "db", "--", "npx", "medusa", "db:migrate"]
