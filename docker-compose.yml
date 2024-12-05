@@ -16,11 +16,11 @@ services:
     build: .
     depends_on:
       - db
-    env_file:
-      - .env
+    environment:
+      DATABASE_URL: postgres://postgres:medusa@db:5432/medusa-app?ssl_mode=disable
     ports:
       - "9000:9000"
-    command: ["./scripts/wait-for-db.sh", "db", "--", "npx medusa db:migrate && npm run dev"]
+    command: tail -f /dev/null
 
 volumes:
   pgdata:
