@@ -19,22 +19,3 @@ services:
       DATABASE_URL: postgres://postgres:medusa@db:5432/medusa-app?ssl_mode=disable
     ports:
       - "9000:9000"
-    networks:
-      - my-network
-
-  medusa-storefront:
-    build: ./medusa-storefront
-    container_name: medusa-storefront
-    ports:
-      - "8000:8000"
-    networks:
-      - my-network
-    depends_on:
-      - medusa-app
-
-volumes:
-  pgdata:
-
-networks:
-  my-network:
-    driver: bridge
