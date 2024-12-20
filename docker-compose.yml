@@ -9,6 +9,8 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - medusa-network
 
   medusa-app:
     build: ./
@@ -19,3 +21,11 @@ services:
       DATABASE_URL: postgres://postgres:medusa@db:5432/medusa-app?ssl_mode=disable
     ports:
       - "9000:9000"
+    networks:
+      - medusa-network
+
+volumes:
+  pgdata:
+
+networks:
+  medusa-network:
