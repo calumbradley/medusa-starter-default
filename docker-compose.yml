@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://postgres:medusa@db:5432/medusa-app?ssl_mode=disable
+      DATABASE_URL: postgres://postgres:medusa@db:5432/medusa-app
     ports:
       - "9000:9000"
     networks:
