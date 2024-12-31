@@ -1,5 +1,4 @@
-# Use Node 20 as the base image
-FROM node:20
+FROM node:lts
 
 # Install netcat-openbsd
 RUN apt-get update && apt-get install -y netcat-openbsd
@@ -16,6 +15,7 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
+# Make the wait-for-app.sh script executable
 RUN chmod +x ./scripts/wait-for-app.sh
 
 # Expose the port the app runs on

@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:lts
 
 # Install postgresql-client
 RUN apt-get update && apt-get install -y postgresql-client
