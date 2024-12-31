@@ -24,6 +24,26 @@ services:
     networks:
       - medusa-network
 
+  frontend-app:
+    build:
+      context: ./medusa-storefront
+      dockerfile: Dockerfile
+    container_name: medusa-storefront-app
+    ports:
+      - "8000:8000"
+    environment:
+      MEDUSA_BACKEND_URL: http://medusa-app:9000
+    depends_on:
+      - medusa-app
+    entrypoint:
+      [
+        "/bin/sh",
+        "-c",
+        "./scripts/wait-for-app.sh medusa-app -- npm run build && npm start",
+      ]
+    networks:
+      - medusa-network
+
 volumes:
   pgdata:
 
