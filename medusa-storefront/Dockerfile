@@ -20,6 +20,3 @@ RUN chmod +x ./scripts/wait-for-app.sh
 
 # Expose the port the app runs on
 EXPOSE 8000
-
-# Keep the container running
-CMD ["tail", "-f", "/dev/null"]
