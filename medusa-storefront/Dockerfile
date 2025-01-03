@@ -20,3 +20,5 @@ RUN chmod +x ./scripts/wait-for-app.sh
 
 # Expose the port the app runs on
 EXPOSE 8000
+
+ENTRYPOINT ["/bin/sh", "-c", "./scripts/wait-for-app.sh medusa-app -- npm run build && npm start"]

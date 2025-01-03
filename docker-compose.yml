@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://postgres:medusa@db:5432/medusa-app
+      DATABASE_URL: postgres://postgres:medusa@db:5432/medusa-app??ssl_mode=disable
     ports:
       - "9000:9000"
     networks:
@@ -35,12 +35,6 @@ services:
       MEDUSA_BACKEND_URL: http://medusa-app:9000
     depends_on:
       - medusa-app
-    entrypoint:
-      [
-        "/bin/sh",
-        "-c",
-        "./scripts/wait-for-app.sh medusa-app -- npm run build && npm start",
-      ]
     networks:
       - medusa-network
 
