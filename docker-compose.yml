@@ -40,6 +40,18 @@ services:
     networks:
       - medusa-network
 
+  nginx:
+    build:
+      context: ./
+      dockerfile: Dockerfile.nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - medusa-storefront-app
+    networks:
+      - medusa-network
+
 volumes:
   pgdata:
 
