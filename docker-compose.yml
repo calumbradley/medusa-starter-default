@@ -1,5 +1,5 @@
 services:
-  db:
+  medusa-db:
     image: postgres:15
     environment:
       POSTGRES_USER: postgres
@@ -16,15 +16,15 @@ services:
     build: ./
     container_name: medusa-app
     depends_on:
-      - db
+      - medusa-db
     environment:
-      DATABASE_URL: postgres://postgres:medusa@db:5432/medusa-app??ssl_mode=disable
+      DATABASE_URL: postgres://postgres:medusa@medusa-db:5432/medusa-app?ssl_mode=disable
     ports:
       - "9000:9000"
     networks:
       - medusa-network
 
-  frontend-app:
+  medusa-storefront-app:
     build:
       context: ./medusa-storefront
       dockerfile: Dockerfile
