@@ -22,4 +22,4 @@ RUN chmod +x ./scripts/wait-for-db.sh
 EXPOSE 9000
 
 # Command to run the application
-CMD ["./scripts/wait-for-db.sh", "db", "npx medusa db:migrate", "npm run dev"]
+CMD ["./scripts/wait-for-db.sh", "db", "npx medusa db:migrate", "npm start"]
