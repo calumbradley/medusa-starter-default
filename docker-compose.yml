@@ -13,7 +13,9 @@ services:
       - medusa-network
 
   medusa-app:
-    build: ./
+    build:
+      context: ./
+      dockerfile: Dockerfile.app
     container_name: medusa-app
     depends_on:
       - medusa-db
@@ -27,7 +29,7 @@ services:
   medusa-storefront-app:
     build:
       context: ./medusa-storefront
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.storefront
     container_name: medusa-storefront-app
     ports:
       - "8000:8000"
