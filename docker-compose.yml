@@ -68,11 +68,11 @@ services:
     networks:
       - medusa-network
 
-  volumes:
-    pgdata:
-    certbot-etc:
-    certbot-var:
-    certbot-www:
+volumes:
+  pgdata:
+  certbot-etc:
+  certbot-var:
+  certbot-www:
 
-  networks:
-    medusa-network:
+networks:
+  medusa-network:
