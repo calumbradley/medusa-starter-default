@@ -13,6 +13,8 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
     networks:
       - medusa-network
+    labels:
+      - "com.github.nginx-proxy.nginx-proxy=true"
 
   acme-companion:
     image: nginxproxy/acme-companion
@@ -26,6 +28,7 @@ services:
       - ./nginx/html:/usr/share/nginx/html
     environment:
       DEFAULT_EMAIL: admin@elevateclo.co
+      NGINX_PROXY_CONTAINER: nginx-proxy
     networks:
       - medusa-network
 
