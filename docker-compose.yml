@@ -25,7 +25,7 @@ services:
       - ./nginx/vhost.d:/etc/nginx/vhost.d
       - ./nginx/html:/usr/share/nginx/html
     environment:
-      DEFAULT_EMAIL: your-email@example.com
+      DEFAULT_EMAIL: admin@elevateclo.co
     networks:
       - medusa-network
 
@@ -35,6 +35,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: medusa
       POSTGRES_DB: medusa-app
+    ports:
+      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
@@ -53,9 +55,9 @@ services:
       POSTGRES_URL: postgres://postgres:medusa@medusa-db:5432/medusa-app?ssl_mode=disable
       VIRTUAL_HOST: backend.elevateclo.co
       LETSENCRYPT_HOST: backend.elevateclo.co
-      LETSENCRYPT_EMAIL: your-email@example.com
+      LETSENCRYPT_EMAIL: admin@elevateclo.co
     expose:
-      - "9000:9000"
+      - "9000"
     networks:
       - medusa-network
 
