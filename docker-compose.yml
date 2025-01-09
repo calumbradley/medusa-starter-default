@@ -21,6 +21,7 @@ services:
       - medusa-db
     environment:
       DATABASE_URL: postgres://postgres:medusa@medusa-db:5432/medusa-app?ssl_mode=disable
+      DB_NAME: medusa-app
     ports:
       - "9000:9000"
     networks:
