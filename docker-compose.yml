@@ -28,33 +28,6 @@ services:
     networks:
       - medusa-network
 
-  medusa-storefront-app:
-    build:
-      context: ./medusa-storefront
-      dockerfile: Dockerfile.storefront
-    container_name: medusa-storefront-app
-    ports:
-      - "8000:8000"
-    environment:
-      MEDUSA_BACKEND_URL: http://medusa-app:9000
-    depends_on:
-      - medusa-app
-    networks:
-      - medusa-network
-
-  nginx:
-    build:
-      context: ./
-      dockerfile: Dockerfile.nginx
-    container_name: nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - medusa-storefront-app
-    networks:
-      - medusa-network
-
 volumes:
   pgdata:
 
