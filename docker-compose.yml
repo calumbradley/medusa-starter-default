@@ -1,12 +1,42 @@
+version: "3.8"
+
 services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy:alpine
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - medusa-network
+
+  acme-companion:
+    image: nginxproxy/acme-companion
+    container_name: acme-companion
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./nginx/certs:/etc/nginx/certs:rw
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/html:/usr/share/nginx/html
+    environment:
+      DEFAULT_EMAIL: your-email@example.com
+    networks:
+      - medusa-network
+
   medusa-db:
     image: postgres:15
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: medusa
       POSTGRES_DB: medusa-app
-    ports:
-      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
@@ -23,8 +53,11 @@ services:
       DATABASE_URL: postgres://postgres:medusa@medusa-db:5432/medusa-app?ssl_mode=disable
       DB_NAME: medusa-app
       POSTGRES_URL: postgres://postgres:medusa@medusa-db:5432/medusa-app?ssl_mode=disable
-    ports:
-      - "9000:9000"
+      VIRTUAL_HOST: backend.elevateclo.co
+      LETSENCRYPT_HOST: backend.elevateclo.co
+      LETSENCRYPT_EMAIL: your-email@example.com
+    expose:
+      - "9000"
     networks:
       - medusa-network
 
