@@ -61,6 +61,9 @@ services:
       LETSENCRYPT_HOST: backend.elevateclo.co
       LETSENCRYPT_EMAIL: admin@elevateclo.co
       REDIS_URL: redis://redis:6379
+      STORE_CORS: http://localhost:8000
+      ADMIN_CORS: https://backend.elevateclo.co
+      AUTH_CORS: http://localhost:8000,https://backend.elevateclo.co
     expose:
       - "9000"
     networks:
