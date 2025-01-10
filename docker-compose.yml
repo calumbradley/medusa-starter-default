@@ -52,6 +52,7 @@ services:
     container_name: medusa-app
     depends_on:
       - medusa-db
+      - redis
     environment:
       DATABASE_URL: postgres://postgres:medusa@medusa-db:5432/medusa-app?ssl_mode=disable
       DB_NAME: medusa-app
@@ -66,12 +67,12 @@ services:
       - medusa-network
 
   redis:
-  image: redis:alpine
-  container_name: redis
-  ports:
-    - "6379:6379"
-  networks:
-    - medusa-network
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - medusa-network
 
 volumes:
   pgdata:
