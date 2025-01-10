@@ -53,17 +53,8 @@ services:
     depends_on:
       - medusa-db
       - redis
-    environment:
-      DATABASE_URL: postgres://postgres:medusa@medusa-db:5432/medusa-app?ssl_mode=disable
-      DB_NAME: medusa-app
-      POSTGRES_URL: postgres://postgres:medusa@medusa-db:5432/medusa-app?ssl_mode=disable
-      VIRTUAL_HOST: backend.elevateclo.co
-      LETSENCRYPT_HOST: backend.elevateclo.co
-      LETSENCRYPT_EMAIL: admin@elevateclo.co
-      REDIS_URL: redis://redis:6379
-      STORE_CORS: http://localhost:8000
-      ADMIN_CORS: https://backend.elevateclo.co
-      AUTH_CORS: http://localhost:8000,https://backend.elevateclo.co
+    env_file:
+      - .env
     expose:
       - "9000"
     networks:
