@@ -59,10 +59,19 @@ services:
       VIRTUAL_HOST: backend.elevateclo.co
       LETSENCRYPT_HOST: backend.elevateclo.co
       LETSENCRYPT_EMAIL: admin@elevateclo.co
+      REDIS_URL: redis://redis:6379
     expose:
       - "9000"
     networks:
       - medusa-network
+
+  redis:
+  image: redis:alpine
+  container_name: redis
+  ports:
+    - "6379:6379"
+  networks:
+    - medusa-network
 
 volumes:
   pgdata:
