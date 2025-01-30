@@ -34,76 +34,25 @@
 
 ## Compatibility
 
-This starter is compatible with versions >= 1.8.0 of `@medusajs/medusa`.
+This starter is compatible with versions >= 2 of `@medusajs/medusa`.
 
 ## Getting Started
 
-Visit the [Quickstart Guide](https://docs.medusajs.com/learn) to set up a server.
+Visit the [Quickstart Guide](https://docs.medusajs.com/learn/installation) to set up a server.
 
-Visit the [Docs](https://docs.medusajs.com/learn#get-started) to learn more about our system requirements.
-
-## Installation
-
-Install medusa-starter-default with npm
-
-```bash
-git clone git@github.com:medusajs/medusa-starter-default.git
-cd medusa-starter-default
-npm install
-```
-
-Create a database in postgres
-
-```bash
-psql -h localhost -U postgres
-```
-
-```sql
-CREATE DATABASE "medusa-app";
-```
-
-```bash
-exit
-```
-
-Update the .env file
-
-```bash
-code .env -r
-```
-
-```text
-# CORS settings for different parts of the app
-STORE_CORS=http://localhost:8000,https://your-storefront-domain.com
-ADMIN_CORS=http://localhost:5173,http://localhost:9000,https://your-admin-domain.com
-AUTH_CORS=http://localhost:5173,http://localhost:9000,https://your-auth-domain.com
-
-# Redis configuration
-REDIS_URL=redis://<username>:<password>@<host>:<port>
-
-# Security keys
-JWT_SECRET=<your-jwt-secret>
-COOKIE_SECRET=<your-cookie-secret>
-
-# Database configuration
-DATABASE_URL=postgres://<username>:<password>@<host>:<port>/$DB_NAME
-POSTGRES_URL=postgres://<username>:<password>@<host>:<port>/$DB_NAME
-
-# Database name
-DB_NAME=<your-database-name>
-```
-
-Run migrations to populate the database
-
-```bash
-npx medusa db:migrate
-```
+Visit the [Docs](https://docs.medusajs.com/learn/installation#get-started) to learn more about our system requirements.
 
 ## What is Medusa
 
 Medusa is a set of commerce modules and tools that allow you to build rich, reliable, and performant commerce applications without reinventing core commerce logic. The modules can be customized and used to build advanced ecommerce stores, marketplaces, or any product that needs foundational commerce primitives. All modules are open-source and freely available on npm.
 
-Learn more about [Medusa’s architecture](https://docs.medusajs.com/learn/advanced-development/architecture/overview) and [commerce modules](https://docs.medusajs.com/learn/basics/commerce-modules) in the Docs.
+Learn more about [Medusa’s architecture](https://docs.medusajs.com/learn/introduction/architecture) and [commerce modules](https://docs.medusajs.com/learn/fundamentals/modules/commerce-modules) in the Docs.
+
+## Community & Contributions
+
+The community and core team are available in [GitHub Discussions](https://github.com/medusajs/medusa/discussions), where you can ask for support, discuss roadmap, and share ideas.
+
+Join our [Discord server](https://discord.com/invite/medusajs) to meet other community members.
 
 ## Other channels
 
